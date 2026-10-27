@@ -1,0 +1,15 @@
+{
+	"name": "pharmaproject",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "4086bead-c543-40a4-a8a6-092dafd7e50a",
+		"tenantId": "2597d6a2-d7bf-42f9-8dc0-f38c0a59fe17"
+	}
+}
