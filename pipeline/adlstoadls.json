@@ -51,23 +51,6 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Set variable1",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "allfiles",
-								"value": {
-									"value": "@item().name",
-									"type": "Expression"
-								}
-							}
-						},
-						{
 							"name": "Copy data1",
 							"type": "Copy",
 							"dependsOn": [
@@ -125,7 +108,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"allfiles": {
-											"value": "@variables('allfiles')",
+											"value": "@variables('allfilenames')",
 											"type": "Expression"
 										}
 									}
@@ -137,13 +120,30 @@
 									"type": "DatasetReference"
 								}
 							]
+						},
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "allfilenames",
+								"value": {
+									"value": "@item().name",
+									"type": "Expression"
+								}
+							}
 						}
 					]
 				}
 			}
 		],
 		"variables": {
-			"allfiles": {
+			"allfilenames": {
 				"type": "String"
 			}
 		},
