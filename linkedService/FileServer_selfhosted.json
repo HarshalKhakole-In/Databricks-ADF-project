@@ -1,0 +1,23 @@
+{
+	"name": "FileServer_selfhosted",
+	"properties": {
+		"annotations": [],
+		"type": "FileServer",
+		"typeProperties": {
+			"host": "c:\\\\",
+			"userId": "LAPTOP-IONE4SN2\\user",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault_onprem",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "onprempassword"
+			}
+		},
+		"connectVia": {
+			"referenceName": "SHIRintegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
