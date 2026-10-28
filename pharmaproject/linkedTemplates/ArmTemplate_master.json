@@ -19,13 +19,13 @@
 			"type": "string",
 			"defaultValue": "https://pharmadatalake7.dfs.core.windows.net/"
 		},
-		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://keyvault456h.vault.azure.net/"
-		},
 		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 			"type": "string",
 			"defaultValue": "1028-040939-rz6g7c0y"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvault456h.vault.azure.net/"
 		},
 		"Event_Trigger_properties_typeProperties_scope": {
 			"type": "string",
@@ -67,11 +67,11 @@
 					"AzureDataLakeStorage1_properties_typeProperties_url": {
 						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
 					},
-					"AzureKeyVault1_properties_typeProperties_baseUrl": {
-						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
-					},
 					"AzureDatabricks1_properties_typeProperties_existingClusterId": {
 						"value": "[parameters('AzureDatabricks1_properties_typeProperties_existingClusterId')]"
+					},
+					"AzureKeyVault1_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
 					},
 					"Event_Trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Event_Trigger_properties_typeProperties_scope')]"
