@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "FileServer",
 		"typeProperties": {
-			"host": "c:\\\\",
+			"host": "c://",
 			"userId": "LAPTOP-IONE4SN2\\user",
 			"password": {
 				"type": "AzureKeyVaultSecret",
