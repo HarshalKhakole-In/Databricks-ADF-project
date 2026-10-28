@@ -31,6 +31,18 @@
 			"type": "string",
 			"defaultValue": "/subscriptions/16b6e818-9e37-4fa7-8d93-42b8b5262cbc/resourceGroups/rg-pharma-analytics-prod/providers/Microsoft.Storage/storageAccounts/pharmadatalake7"
 		},
+		"AzureKeyVault_onprem_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvault456h.vault.azure.net/"
+		},
+		"FileServer_selfhosted_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "c://"
+		},
+		"FileServer_selfhosted_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "LAPTOP-IONE4SN2\\user"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -72,6 +84,15 @@
 					},
 					"AzureKeyVault1_properties_typeProperties_baseUrl": {
 						"value": "[parameters('AzureKeyVault1_properties_typeProperties_baseUrl')]"
+					},
+					"AzureKeyVault_onprem_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault_onprem_properties_typeProperties_baseUrl')]"
+					},
+					"FileServer_selfhosted_properties_typeProperties_host": {
+						"value": "[parameters('FileServer_selfhosted_properties_typeProperties_host')]"
+					},
+					"FileServer_selfhosted_properties_typeProperties_userId": {
+						"value": "[parameters('FileServer_selfhosted_properties_typeProperties_userId')]"
 					},
 					"Event_Trigger_properties_typeProperties_scope": {
 						"value": "[parameters('Event_Trigger_properties_typeProperties_scope')]"

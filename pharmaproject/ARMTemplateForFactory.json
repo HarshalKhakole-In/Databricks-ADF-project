@@ -30,6 +30,18 @@
 		"Event_Trigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/16b6e818-9e37-4fa7-8d93-42b8b5262cbc/resourceGroups/rg-pharma-analytics-prod/providers/Microsoft.Storage/storageAccounts/pharmadatalake7"
+		},
+		"AzureKeyVault_onprem_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://keyvault456h.vault.azure.net/"
+		},
+		"FileServer_selfhosted_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "c://"
+		},
+		"FileServer_selfhosted_properties_typeProperties_userId": {
+			"type": "string",
+			"defaultValue": "LAPTOP-IONE4SN2\\user"
 		}
 	},
 	"variables": {
@@ -158,8 +170,7 @@
 								"childItems"
 							],
 							"storeSettings": {
-								"type": "AzureBlobFSReadSettings",
-								"recursive": true,
+								"type": "FileServerReadSettings",
 								"enablePartitionDiscovery": false
 							},
 							"formatSettings": {
@@ -209,7 +220,7 @@
 										"source": {
 											"type": "DelimitedTextSource",
 											"storeSettings": {
-												"type": "AzureBlobFSReadSettings",
+												"type": "FileServerReadSettings",
 												"recursive": true,
 												"enablePartitionDiscovery": false
 											},
@@ -301,15 +312,15 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureDataLakeStorage1",
+					"referenceName": "FileServer_selfhosted",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileSystem": "filestorage"
+						"type": "FileServerLocation",
+						"folderPath": "IR_Dataset"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -400,7 +411,7 @@
 				]
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+				"[concat(variables('factoryId'), '/linkedServices/FileServer_selfhosted')]"
 			]
 		},
 		{
@@ -409,7 +420,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "AzureDataLakeStorage1",
+					"referenceName": "FileServer_selfhosted",
 					"type": "LinkedServiceReference"
 				},
 				"parameters": {
@@ -421,12 +432,12 @@
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
-						"type": "AzureBlobFSLocation",
+						"type": "FileServerLocation",
 						"fileName": {
 							"value": "@dataset().allfiles",
 							"type": "Expression"
 						},
-						"fileSystem": "filestorage"
+						"folderPath": "IR_Dataset"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -436,7 +447,7 @@
 				"schema": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+				"[concat(variables('factoryId'), '/linkedServices/FileServer_selfhosted')]"
 			]
 		},
 		{
@@ -520,7 +531,7 @@
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"runtimeState": "Stopped",
+				"runtimeState": "Started",
 				"pipelines": [
 					{
 						"pipelineReference": {
@@ -550,6 +561,58 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/pipelines/Master_pipeline')]",
 				"[concat(variables('factoryId'), '/pipelines/adlstoadls')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SHIRintegrationRuntime')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVault_onprem')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "[parameters('AzureKeyVault_onprem_properties_typeProperties_baseUrl')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/FileServer_selfhosted')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "FileServer",
+				"typeProperties": {
+					"host": "[parameters('FileServer_selfhosted_properties_typeProperties_host')]",
+					"userId": "[parameters('FileServer_selfhosted_properties_typeProperties_userId')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "AzureKeyVault_onprem",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "onprempassword"
+					}
+				},
+				"connectVia": {
+					"referenceName": "SHIRintegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/SHIRintegrationRuntime')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault_onprem')]"
 			]
 		}
 	]
