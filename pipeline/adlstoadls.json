@@ -23,8 +23,7 @@
 						"childItems"
 					],
 					"storeSettings": {
-						"type": "AzureBlobFSReadSettings",
-						"recursive": true,
+						"type": "FileServerReadSettings",
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -74,7 +73,7 @@
 								"source": {
 									"type": "DelimitedTextSource",
 									"storeSettings": {
-										"type": "AzureBlobFSReadSettings",
+										"type": "FileServerReadSettings",
 										"recursive": true,
 										"enablePartitionDiscovery": false
 									},

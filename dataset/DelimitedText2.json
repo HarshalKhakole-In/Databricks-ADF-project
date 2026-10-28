@@ -2,7 +2,7 @@
 	"name": "DelimitedText2",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureDataLakeStorage1",
+			"referenceName": "FileServer_selfhosted",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -14,12 +14,12 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
+				"type": "FileServerLocation",
 				"fileName": {
 					"value": "@dataset().allfiles",
 					"type": "Expression"
 				},
-				"fileSystem": "filestorage"
+				"folderPath": "IR_Dataset"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
