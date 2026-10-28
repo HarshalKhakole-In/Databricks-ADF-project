@@ -438,22 +438,6 @@
 								}
 							]
 						}
-					},
-					{
-						"name": "Wait1",
-						"type": "Wait",
-						"dependsOn": [
-							{
-								"activity": "ForEach1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"userProperties": [],
-						"typeProperties": {
-							"waitTimeInSeconds": 1
-						}
 					}
 				],
 				"policy": {
@@ -544,6 +528,13 @@
 							"type": "PipelineReference"
 						},
 						"parameters": {}
+					},
+					{
+						"pipelineReference": {
+							"referenceName": "adlstoadls",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
 					}
 				],
 				"type": "BlobEventsTrigger",
@@ -557,7 +548,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/Master_pipeline')]"
+				"[concat(variables('factoryId'), '/pipelines/Master_pipeline')]",
+				"[concat(variables('factoryId'), '/pipelines/adlstoadls')]"
 			]
 		}
 	]
