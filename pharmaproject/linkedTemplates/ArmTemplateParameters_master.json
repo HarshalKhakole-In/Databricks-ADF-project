@@ -20,9 +20,6 @@
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://keyvault456h.vault.azure.net/"
 		},
-		"Event_Trigger_properties_typeProperties_scope": {
-			"value": "/subscriptions/16b6e818-9e37-4fa7-8d93-42b8b5262cbc/resourceGroups/rg-pharma-analytics-prod/providers/Microsoft.Storage/storageAccounts/pharmadatalake7"
-		},
 		"AzureKeyVault_onprem_properties_typeProperties_baseUrl": {
 			"value": "https://keyvault456h.vault.azure.net/"
 		},
@@ -31,6 +28,9 @@
 		},
 		"FileServer_selfhosted_properties_typeProperties_userId": {
 			"value": "LAPTOP-IONE4SN2\\user"
+		},
+		"Event_Trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/16b6e818-9e37-4fa7-8d93-42b8b5262cbc/resourceGroups/rg-pharma-analytics-prod/providers/Microsoft.Storage/storageAccounts/pharmadatalake7"
 		},
 		"containerUri": {
 			"value": ""
