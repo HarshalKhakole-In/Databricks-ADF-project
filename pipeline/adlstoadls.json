@@ -141,22 +141,6 @@
 						}
 					]
 				}
-			},
-			{
-				"name": "Wait1",
-				"type": "Wait",
-				"dependsOn": [
-					{
-						"activity": "ForEach1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 1
-				}
 			}
 		],
 		"variables": {

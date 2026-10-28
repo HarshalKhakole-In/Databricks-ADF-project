@@ -9,6 +9,12 @@
 					"referenceName": "Master_pipeline",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "adlstoadls",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "BlobEventsTrigger",
