@@ -8,8 +8,20 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://pharmadatalake7.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://keyvault456h.vault.azure.net/"
+		},
+		"AzureDatabricks1_properties_typeProperties_existingClusterId": {
+			"value": "1028-040939-rz6g7c0y"
+		},
+		"Event_Trigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/16b6e818-9e37-4fa7-8d93-42b8b5262cbc/resourceGroups/rg-pharma-analytics-prod/providers/Microsoft.Storage/storageAccounts/pharmadatalake7"
 		},
 		"containerUri": {
 			"value": ""
